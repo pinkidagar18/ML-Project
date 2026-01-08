@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMetrics | Academic Performance Intelligence Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700;900&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0a0e27;
+            --ink-light: #1a1f3a;
+            --cream: #fdfbf7;
+            --accent: #ff6b35;
+            --accent-soft: #ffb088;
+            --sage: #70a288;
+            --lavender: #9381ff;
+            --mist: #e8e4dd;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background gradient orbs */
+        .bg-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            top: -10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--lavender);
+            bottom: -5%;
+            left: -5%;
+            animation-delay: 7s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--sage);
+            top: 40%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 28px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(253, 251, 247, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(10, 14, 39, 0.08);
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--ink);
+        }
+
+        .logo span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            border: 2px solid var(--ink);
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        .nav-link:hover {
+            background: var(--ink);
+            color: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 80px;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            background: rgba(255, 107, 53, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease 0.3s backwards;
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 32px;
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent), var(--lavender));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .hero-description {
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--ink-light);
+            max-width: 700px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease 0.5s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 48px;
+            background: var(--ink);
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 40px rgba(10, 14, 39, 0.15);
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 28px 50px rgba(10, 14, 39, 0.25);
+            background: var(--accent);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            position: relative;
+            padding: 100px 40px;
+            background: var(--ink);
+            z-index: 1;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .stat-number {
+            font-family: 'Fraunces', serif;
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--cream);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        /* Features Section */
+        .features-section {
+            position: relative;
+            padding: 120px 40px;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--ink-light);
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(10, 14, 39, 0.08);
+            border: 1px solid var(--mist);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--lavender));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(10, 14, 39, 0.15);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        .feature-title {
+            font-family: 'Fraunces', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .feature-description {
+            font-size: 16px;
+            color: var(--ink-light);
+            line-height: 1.7;
+        }
+
+        /* Impact Analysis */
+        .impact-section {
+            position: relative;
+            padding: 120px 40px;
+            background: linear-gradient(135deg, #f8f6f1 0%, #e8e4dd 100%);
+            z-index: 1;
+        }
+
+        .impact-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .impact-card {
+            background: white;
+            border-radius: 32px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(10, 14, 39, 0.1);
+        }
+
+        .impact-item {
+            margin-bottom: 40px;
+        }
+
+        .impact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .impact-label {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--ink);
+        }
+
+        .impact-value {
+            font-family: 'Fraunces', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--sage);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 16px;
+            background: var(--mist);
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 100px;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-1 { background: linear-gradient(90deg, var(--accent), var(--accent-soft)); }
+        .progress-2 { background: linear-gradient(90deg, var(--lavender), #b8a7ff); }
+        .progress-3 { background: linear-gradient(90deg, var(--sage), #8fbfa4); }
+
+        /* Footer */
+        footer {
+            position: relative;
+            padding: 80px 40px 40px;
+            background: var(--ink);
+            color: var(--cream);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Fraunces', serif;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .footer-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-soft);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .stats-section {
+                padding: 60px 20px;
+            }
+
+            .features-section,
+            .impact-section {
+                padding: 80px 20px;
+            }
+
+            .impact-card {
+                padding: 40px 30px;
+            }
+
+            .feature-card {
+                padding: 32px;
+            }
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Orbs -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Study<span>Metrics</span></div>
+        <a href="https://github.com/Inder-26/mlproject/" target="_blank" class="nav-link">View on GitHub</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">Predictive Analytics Platform</span>
+            <h1>
+                Academic Success<br>
+                <span class="gradient-text">Powered by Intelligence</span>
+            </h1>
+            <p class="hero-description">
+                Leverage advanced machine learning algorithms to forecast student performance based on comprehensive demographic analysis and educational indicators.
+            </p>
+            <a href="{{ url_for('predict_datapoint') }}" class="cta-button">Launch Prediction Engine →</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">92.4%</span>
+                <span class="stat-label">Model Accuracy</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">1,000+</span>
+                <span class="stat-label">Student Records</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">7</span>
+                <span class="stat-label">Key Variables</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="section-header reveal">
+            <h2 class="section-title">Intelligent Analysis Framework</h2>
+            <p class="section-subtitle">
+                Our platform combines multiple data dimensions to deliver precise academic performance predictions
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Multi-Factor Assessment</h3>
+                <p class="feature-description">
+                    Analyzes reading comprehension, writing proficiency, and demographic variables to generate holistic predictions.
+                </p>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Real-Time Computation</h3>
+                <p class="feature-description">
+                    Instant score predictions using optimized regression models trained on validated educational datasets.
+                </p>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">🧬</div>
+                <h3 class="feature-title">Socioeconomic Context</h3>
+                <p class="feature-description">
+                    Incorporates parental education levels and lunch program eligibility for comprehensive assessment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Analysis -->
+    <section class="impact-section">
+        <div class="impact-container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Variable Impact Analysis</h2>
+                <p class="section-subtitle">
+                    Understanding which factors most significantly influence mathematics performance
+                </p>
+            </div>
+
+            <div class="impact-card reveal">
+                <div class="impact-item">
+                    <div class="impact-header">
+                        <span class="impact-label">Reading & Writing Proficiency</span>
+                        <span class="impact-value">+12.4 pts</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-1" style="width: 0%" data-width="90"></div>
+                    </div>
+                </div>
+
+                <div class="impact-item">
+                    <div class="impact-header">
+                        <span class="impact-label">Test Preparation Course</span>
+                        <span class="impact-value">+8.2 pts</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-2" style="width: 0%" data-width="65"></div>
+                    </div>
+                </div>
+
+                <div class="impact-item">
+                    <div class="impact-header">
+                        <span class="impact-label">Parental Education Level</span>
+                        <span class="impact-value">+7.5 pts</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-3" style="width: 0%" data-width="55"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">StudyMetrics</div>
+            <p class="footer-text">© 2025 Academic Performance Intelligence Platform</p>
+            <p class="footer-text">
+                Open Source Project · <a href="https://github.com/Inder-26/mlproject/" target="_blank" class="footer-link">Contribute on GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Animate progress bars when visible
+        const progressBars = document.querySelectorAll('.progress-fill');
+        
+        const animateProgressBars = () => {
+            progressBars.forEach(bar => {
+                const barTop = bar.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (barTop < windowHeight - 100 && bar.style.width === '0%') {
+                    const targetWidth = bar.getAttribute('data-width');
+                    bar.style.width = targetWidth + '%';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateProgressBars);
+        animateProgressBars(); // Initial check
+    </script>
+</body>
+</html>
