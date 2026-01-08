@@ -15,6 +15,31 @@
 
 ---
 
+## 📑 Table of Contents
+
+- [Overview](#-overview)
+- [Demo](#-demo)
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [API Endpoints](#-api-endpoints)
+- [Model Details](#-model-details)
+- [Dataset](#-dataset)
+- [Technologies Used](#-technologies-used)
+- [Performance Metrics](#-performance-metrics)
+- [Configuration](#-configuration)
+- [Troubleshooting](#-troubleshooting)
+  - [Installation Issues](#installation-issues)
+  - [Application Runtime Errors](#application-runtime-errors)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Author](#-author)
+- [Acknowledgments](#-acknowledgments)
+- [Support](#-support)
+
+---
+
 ## 🎯 Overview
 
 This project implements a **machine learning regression model** to predict student mathematics performance based on various socioeconomic and academic factors. The model analyzes demographic variables, parental education levels, test preparation, and other academic scores to provide accurate predictions.
@@ -454,9 +479,6 @@ cd "path/to/ML-Project"
 python app.py
 ```
 
-```
-```
-
 #### Issue 8: Cross-platform path issues
 **Solution:**
 ```python
@@ -470,10 +492,6 @@ model_path = Path('artifacts') / 'model.pkl'
 ```
 
 ---
-
-```
-
-```
 
 ## 🤝 Contributing
 
@@ -535,4 +553,3 @@ For support, email pinkidagar18@gmail.com or open an issue on GitHub.
 Made with ❤️ by [Pinki](https://github.com/pinkidagar18)
 
 </div>
-
