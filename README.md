@@ -33,12 +33,12 @@ This project implements a **machine learning regression model** to predict stude
 ### Landing Page
 Clean, modern landing page with feature highlights and impact analysis.
 
-![Landing Page](screenshots/Landing_Page.png)
+![Landing Page](images/Landing%20Page.png)
 
 ### Prediction Interface
 Interactive form with real-time score prediction and confidence intervals.
 
-![Prediction Interface](screenshots/Prediction_Interface.png)
+![Prediction Interface](images/Prediction%20Interface.png)
 
 ---
 
@@ -535,3 +535,4 @@ For support, email pinkidagar18@gmail.com or open an issue on GitHub.
 Made with ❤️ by [Pinki](https://github.com/pinkidagar18)
 
 </div>
+
