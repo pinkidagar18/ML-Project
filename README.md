@@ -32,11 +32,14 @@ This project implements a **machine learning regression model** to predict stude
 
 ### Landing Page
 Clean, modern landing page with feature highlights and impact analysis.
-![Landing Page](images/Landing Page.png)
+
+![Landing Page](screenshots/Landing_Page.png)
 
 ### Prediction Interface
 Interactive form with real-time score prediction and confidence intervals.
-![Prediction Interface](images/Prediction Interface.png)
+
+![Prediction Interface](screenshots/Prediction_Interface.png)
+
 ---
 
 ## ✨ Features
@@ -101,9 +104,14 @@ ML-Project/
 │   ├── index.html                # Landing page
 │   └── home.html                 # Prediction interface
 │
+├── screenshots/                   # Application screenshots
+│   ├── Landing_Page.png          # Landing page screenshot
+│   └── Prediction_Interface.png  # Prediction page screenshot
+│
 ├── app.py                        # Flask application
 ├── requirements.txt              # Python dependencies
 ├── setup.py                      # Package setup
+├── .gitignore                    # Git ignore file
 └── README.md                     # Documentation
 ```
 
@@ -120,8 +128,8 @@ ML-Project/
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/pinkidagar18/ML-Project
-cd mlproject
+git clone https://github.com/pinkidagar18/ML-Project.git
+cd ML-Project
 ```
 
 2. **Create virtual environment**
@@ -364,37 +372,8 @@ pip install -e .
 # Solution: Use a different port
 # Edit app.py: app.run(port=5001)
 ```
-
 ---
 
-## 🚀 Deployment
-
-### Local Deployment
-```bash
-python app.py
-```
-
-### Production Deployment (Heroku)
-```bash
-# Create Procfile
-echo "web: gunicorn app:app" > Procfile
-
-# Deploy to Heroku
-heroku create your-app-name
-git push heroku main
-```
-
-### Docker Deployment
-```dockerfile
-FROM python:3.8-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["python", "app.py"]
-```
-
----
 
 ## 🤝 Contributing
 
@@ -405,6 +384,12 @@ Contributions are welcome! Please follow these steps:
 3. Commit changes (`git commit -m 'Add AmazingFeature'`)
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+### Development Guidelines
+- Follow PEP 8 style guide for Python code
+- Add docstrings to functions and classes
+- Write unit tests for new features
+- Update documentation as needed
 
 ---
 
@@ -418,7 +403,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Pinki**
 - Email: pinkidagar18@gmail.com
-
+- GitHub: [@pinkidagar18](https://github.com/pinkidagar18)
+- Project Link: [https://github.com/pinkidagar18/ML-Project](https://github.com/pinkidagar18/ML-Project)
 
 ---
 
@@ -427,6 +413,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Dataset source: Student Performance Dataset
 - Inspiration: End-to-end ML project implementation
 - UI Design: Modern editorial-style web aesthetics
+- Icons: Emoji icons for visual appeal
 
 ---
 
@@ -434,13 +421,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For support, email pinkidagar18@gmail.com or open an issue on GitHub.
 
+### Quick Links
+- [Report Bug](https://github.com/pinkidagar18/ML-Project/issues)
+- [Request Feature](https://github.com/pinkidagar18/ML-Project/issues)
+- [View Documentation](https://github.com/pinkidagar18/ML-Project)
+
 ---
 
 <div align="center">
 
 ### ⭐ Star this repo if you found it helpful!
 
-Made with ❤️ by [Pinki](https://github.com/Inder-26)
+Made with ❤️ by [Pinki](https://github.com/pinkidagar18)
 
 </div>
-
