@@ -9,7 +9,7 @@
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.8-orange)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-[Demo](#-demo) • [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [API](#-api-endpoints)
+[Demo](#-demo) • [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [API](#-api-endpoints) • [Troubleshooting](#-troubleshooting)
 
 </div>
 
@@ -33,11 +33,13 @@ This project implements a **machine learning regression model** to predict stude
 ### Landing Page
 Clean, modern landing page with feature highlights and impact analysis.
 
-![Landing Page](images/Landing%20Page.png)
+![Landing Page](screenshots/Landing_Page.png)
+
 ### Prediction Interface
 Interactive form with real-time score prediction and confidence intervals.
 
-![Prediction Interface](images/Prediction%20Interface.png)
+![Prediction Interface](screenshots/Prediction_Interface.png)
+
 ---
 
 ## ✨ Features
@@ -350,28 +352,128 @@ app.run(host="0.0.0.0", port=5000, debug=False) # Production
 
 ## 🐛 Troubleshooting
 
-### Common Issues
+### Installation Issues
 
-**Issue**: `FileNotFoundError: artifacts/model.pkl`
+#### Issue 1: `ModuleNotFoundError: No module named 'src'`
+**Solution:**
 ```bash
-# Solution: Ensure model files are in artifacts folder
-mkdir artifacts
-# Place model.pkl and preprocessor.pkl in artifacts/
-```
-
-**Issue**: `ModuleNotFoundError: No module named 'src'`
-```bash
-# Solution: Install the package in editable mode
+# Install the package in editable mode
 pip install -e .
+
+# Or add to Python path temporarily
+export PYTHONPATH="${PYTHONPATH}:${PWD}"  # Linux/Mac
+set PYTHONPATH=%PYTHONPATH%;%CD%  # Windows
 ```
 
-**Issue**: Port 5000 already in use
-```bash
-# Solution: Use a different port
-# Edit app.py: app.run(port=5001)
+#### Issue 2: Virtual environment not activating (Windows PowerShell)
+**Solution:**
+```powershell
+# Enable script execution
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Then activate
+.\venv\Scripts\Activate.ps1
 ```
+
+#### Issue 3: `pip install` fails
+**Solution:**
+```bash
+# Upgrade pip first
+python -m pip install --upgrade pip
+
+# Install packages individually if batch fails
+pip install pandas numpy scikit-learn
+pip install flask matplotlib seaborn
+pip install xgboost catboost
+
+# For specific Python version
+py -3.9 -m pip install -r requirements.txt
+```
+
+#### Issue 4: Permission denied during installation
+**Solution:**
+```bash
+# Use --user flag
+pip install --user -r requirements.txt
+
+# Or run terminal as Administrator (Windows)
+# Or use sudo (Linux/Mac - not recommended for venv)
+```
+
 ---
 
+### Application Runtime Errors
+
+#### Issue 5: `FileNotFoundError: artifacts/model.pkl`
+**Solution:**
+```bash
+# Create artifacts folder
+mkdir artifacts
+
+# Ensure files are named correctly
+# ✅ preprocessor.pkl (with 'e')
+# ❌ proprocessor.pkl (common typo)
+
+# Verify files exist
+dir artifacts  # Windows
+ls artifacts   # Linux/Mac
+
+# Should show:
+# model.pkl
+# preprocessor.pkl
+```
+
+#### Issue 6: Port 5000 already in use
+**Solution:**
+```bash
+# Option 1: Kill process using port 5000
+# Windows
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
+
+# Linux/Mac
+lsof -i :5000
+kill -9 <PID>
+
+# Option 2: Use different port
+# Edit app.py: app.run(port=8080)
+```
+
+#### Issue 7: `jinja2.exceptions.TemplateNotFound: index.html`
+**Solution:**
+```bash
+# Verify folder structure
+ML-Project/
+├── templates/          # Must be named exactly "templates"
+│   ├── index.html
+│   └── home.html
+└── app.py
+
+# Ensure you're running from project root
+cd "path/to/ML-Project"
+python app.py
+```
+
+```
+```
+
+#### Issue 8: Cross-platform path issues
+**Solution:**
+```python
+# Use os.path.join for cross-platform compatibility
+import os
+model_path = os.path.join('artifacts', 'model.pkl')
+
+# Or use pathlib
+from pathlib import Path
+model_path = Path('artifacts') / 'model.pkl'
+```
+
+---
+
+```
+
+```
 
 ## 🤝 Contributing
 
@@ -433,6 +535,3 @@ For support, email pinkidagar18@gmail.com or open an issue on GitHub.
 Made with ❤️ by [Pinki](https://github.com/pinkidagar18)
 
 </div>
-
-
-
