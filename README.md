@@ -539,10 +539,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For support, email pinkidagar18@gmail.com or open an issue on GitHub.
 
-### Quick Links
-- [Report Bug](https://github.com/pinkidagar18/ML-Project/issues)
-- [Request Feature](https://github.com/pinkidagar18/ML-Project/issues)
-- [View Documentation](https://github.com/pinkidagar18/ML-Project)
 
 ---
 
@@ -553,3 +549,4 @@ For support, email pinkidagar18@gmail.com or open an issue on GitHub.
 Made with ❤️ by [Pinki](https://github.com/pinkidagar18)
 
 </div>
+
